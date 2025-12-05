@@ -1,2 +1,2 @@
 # Turbulence-Modelling-A25
-Assignment course carried out by Group 1 
+Course assignment carried out by Group 1 
