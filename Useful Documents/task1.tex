@@ -1,0 +1,117 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{graphicx}
+
+\sisetup{
+  detect-all,
+  per-mode=symbol,
+  scientific-notation=true
+}
+
+\title{Task 1 -- Reference Flow Conditions}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Task 1 -- Definition of Reference Flow Conditions}
+
+The objective of Task~1 is to determine the reference flow properties at the Pitot-static probe
+location using the experimental data provided in Table~2. These reference quantities are later
+used consistently to define inlet conditions and fluid properties in the CFD simulations.
+
+\subsection{Experimental Reference Data}
+
+Stagnation and static pressure and temperature measurements were obtained using a Pitot-static
+probe located at $x=\SI{3.502}{m}$, $y=\SI{-0.608}{m}$, $z=\SI{0}{m}$ (Figure~2).
+The experimental quantities available at this location are: the reference Mach number
+$\mathrm{Ma}_{\mathrm{ref}}$, the stagnation temperature $T_{0,\mathrm{ref}}$,
+the stagnation pressure $p_{0,\mathrm{ref}}$, the static pressure $p_{\mathrm{ref}}$,
+and the ratio $u_{\mathrm{ref}}/\nu$.
+
+Air is assumed to behave as a perfect gas, with $\gamma = 1.4$ and
+$R = \SI{287.05}{J\,kg^{-1}\,K^{-1}}$.
+
+\subsection{Reference Temperature and Velocity}
+
+The static temperature at the reference location is obtained from the stagnation temperature
+relation for a calorically perfect gas:
+\begin{equation}
+T_{\mathrm{ref}} =
+\frac{T_{0,\mathrm{ref}}}
+{1 + \frac{\gamma - 1}{2}\,\mathrm{Ma}_{\mathrm{ref}}^{2}}.
+\end{equation}
+
+The local speed of sound follows as
+\begin{equation}
+a_{\mathrm{ref}} = \sqrt{\gamma R T_{\mathrm{ref}}}.
+\end{equation}
+
+Using the definition of the Mach number, the reference velocity is
+\begin{equation}
+u_{\mathrm{ref}} = \mathrm{Ma}_{\mathrm{ref}}\, a_{\mathrm{ref}}.
+\end{equation}
+
+\subsection{Reference Density}
+
+The reference density is computed from the ideal gas law using the local static pressure
+and temperature:
+\begin{equation}
+\rho_{\mathrm{ref}} = \frac{p_{\mathrm{ref}}}{R\,T_{\mathrm{ref}}}.
+\end{equation}
+
+\subsection{Kinematic and Dynamic Viscosity}
+
+The experimental ratio $u_{\mathrm{ref}}/\nu$ is provided in Table~2. The kinematic viscosity
+is therefore obtained as
+\begin{equation}
+\nu = \frac{u_{\mathrm{ref}}}{\left(u_{\mathrm{ref}}/\nu\right)}.
+\end{equation}
+The corresponding dynamic viscosity is
+\begin{equation}
+\mu = \rho_{\mathrm{ref}}\,\nu.
+\end{equation}
+
+\subsection{Justification of Incompressible and Isothermal Assumptions}
+
+For all experimental cases, the reference Mach number remains below $0.2$.
+At such low Mach numbers, compressibility effects on the mean flow are negligible,
+and the flow can be reasonably modeled as incompressible.
+
+Furthermore, the temperature difference between stagnation and static conditions,
+$T_{0,\mathrm{ref}} - T_{\mathrm{ref}}$, remains below approximately \SI{2.3}{K}
+for all cases. This variation is negligible compared to the absolute temperature level
+of approximately \SI{300}{K}, justifying the use of an isothermal flow model with
+constant fluid properties.
+
+\subsection{Summary of Reference Flow Properties}
+
+Table~\ref{tab:ref_properties} summarizes the reference quantities obtained from the
+experimental data and the above calculations.
+
+\begin{table}[h!]
+\centering
+\caption{Summary of reference flow properties at the Pitot-static probe location.}
+\label{tab:ref_properties}
+\begin{tabular}{c c c c c c}
+\toprule
+Case &
+$\mathrm{Ma}_{\mathrm{ref}}$ &
+$u_{\mathrm{ref}}$ [m/s] &
+$\rho_{\mathrm{ref}}$ [kg/m$^{3}$] &
+$\nu$ [m$^{2}$/s] &
+$\mu$ [Pa$\cdot$s] \\
+\midrule
+1 & 0.082 & 28.32 & 1.103 & $1.67\times10^{-5}$ & $1.84\times10^{-5}$ \\
+2 & 0.136 & 47.01 & 1.091 & $1.68\times10^{-5}$ & $1.83\times10^{-5}$ \\
+3 & 0.193 & 66.81 & 1.073 & $1.71\times10^{-5}$ & $1.84\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
