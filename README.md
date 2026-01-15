@@ -1,7 +1,7 @@
 # Turbulence-Modelling-A25
 Course assignment carried out by Group 2
 # Link to Overleaf report
--Anyone with this link can edit this project <br>  
+-Anyone with this link can edit this project<br>
 https://www.overleaf.com/9221172383fznkcjcgwrzq#a6a569<br> 
 -Anyone with this link can view this project<br>
 https://www.overleaf.com/read/chdpzxzyqjgd#61812c<br>
